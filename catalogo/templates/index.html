@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Mi superbiblio {% endblock %}
+
+{% block content %}
+    <h1>Índice del catálogo</h1>
+    
+
+    <h2 class="mt-4">Últimos libros</h2>
+    <ul>
+        ultimoLibro.title = 
+        <li>{{ultimoLibro.title}}</li>
+    </ul>
+
+    <h2 class="mt-4">Idiomas</h2>
+    <ul>
+        {l.name for l in }
+        <li>{{ultimoLibro.title}}</li>
+    </ul>
+
+    <h2 class="mt-4">Formulario de contacto</h2>
+    <div>
+        <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}"
+          method="post">
+          <fieldset id="fs-frm-inputs">
+            <label for="full-name">Nombre completo: </label>
+            <input type="text" name="name" id="full-name" placeholder="Alfonso Fernandez Martín" required="">
+            <br>
+            <label for="email-address">Correo electrónico: </label>
+            <input type="email" name="_replyto" id="email-address" placeholder="alfonsofm@gmail.com" required="">
+            <br>
+            <label for="message">Observación/es: </label>
+            <textarea rows="1" name="message" id="message" placeholder="Escriba aquí." required=""></textarea>
+            <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+          </fieldset>
+          <input type="submit" value="Enviar">
+        </form>
+      </div>
+
+{% endblock %}
