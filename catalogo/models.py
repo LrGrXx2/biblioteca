@@ -70,6 +70,7 @@ class Languaje(models.Model):
     class Meta:
         verbose_name = 'Idioma'
 
+
 # FORMULARIO DE CONTACTO
 
 from django import forms
@@ -79,3 +80,40 @@ class ContactForm(forms.Form):
 	last_name = forms.CharField(max_length = 50)
 	email_address = forms.EmailField(max_length = 150)
 	message = forms.CharField(widget = forms.Textarea, max_length = 2000)
+
+
+#from django.db import ListView
+#class SearchResultsListView(ListView):
+#    model = Book
+#    context_object_name = 'book_list'
+#    template_name = 'books/search_results.html'
+#    def get_queryset(self): # new
+#        query = self.request.GET.get('q')
+#        return Book.objects.filter(title__icontains=query)
+
+#https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Models
+class MyModelName(models.Model):
+    """
+    Una clase típica definiendo un modelo, derivado desde la clase Model.
+    """
+
+    # Campos
+    my_field_name = models.CharField(max_length=20, help_text="Enter field documentation")
+    ...
+
+    # Metadata
+    class Meta:
+        ordering = ["-my_field_name"]
+
+    # Métodos
+    def get_absolute_url(self):
+         """
+         Devuelve la url para acceder a una instancia particular de MyModelName.
+         """
+         return reverse('model-detail-view', args=[str(self.id)])
+
+    def __str__(self):
+        """
+        Cadena para representar el objeto MyModelName (en el sitio de Admin, etc.)
+        """
+        return self.field_name

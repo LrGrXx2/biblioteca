@@ -3,38 +3,49 @@
 {% block title %}Mi superbiblio {% endblock %}
 
 {% block content %}
-    <h1>Índice del catálogo</h1>
-    
+<h1>Índice del catálogo</h1>
 
-    <h2 class="mt-4">Últimos libros</h2>
-    <ul>
-        ultimoLibro.title = 
-        <li>{{ultimoLibro.title}}</li>
-    </ul>
+<hr>
+<h2 class="mt-4">Últimos libros</h2>
+<ul>
+  ultimoLibro = books.pop()
+  <li>{{ultimoLibro}}</li>
+</ul>
 
-    <h2 class="mt-4">Idiomas</h2>
-    <ul>
-        {l.name for l in }
-        <li>{{ultimoLibro.title}}</li>
-    </ul>
+<h2 class="mt-4">Idiomas</h2>
+<ul>
+  {l.name for l in }
+  <li>{{ultimoLibro.title}}</li>
+</ul>
 
-    <h2 class="mt-4">Formulario de contacto</h2>
-    <div>
-        <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}"
-          method="post">
-          <fieldset id="fs-frm-inputs">
-            <label for="full-name">Nombre completo: </label>
-            <input type="text" name="name" id="full-name" placeholder="Alfonso Fernandez Martín" required="">
-            <br>
-            <label for="email-address">Correo electrónico: </label>
-            <input type="email" name="_replyto" id="email-address" placeholder="alfonsofm@gmail.com" required="">
-            <br>
-            <label for="message">Observación/es: </label>
-            <textarea rows="1" name="message" id="message" placeholder="Escriba aquí." required=""></textarea>
-            <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-          </fieldset>
-          <input type="submit" value="Enviar">
-        </form>
-      </div>
+<h2 class="mt-4">Formulario de contacto</h2>
+<div>
+  <form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}"
+    method="post" class="form-inline mt-2 mt-md-0" action="" method="get">
+    <fieldset id="fs-frm-inputs">
+      <label for="full-name">Nombre completo: </label>
+      <input type="text" name="name" id="full-name" placeholder="Alfonso Fernandez Martín" required="">
+      <br>
+      <label for="email-address">Correo electrónico: </label>
+      <input type="email" name="_replyto" id="email-address" placeholder="alfonsofm@gmail.com" required="">
+      <br>
+      <label for="message">Observación/es: </label>
+      <textarea rows="1" name="message" id="message" placeholder="Escriba aquí." required=""></textarea>
+      <br>
+      <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission"
+        class="form-control mr-sm-2" aria-label="Search">
+    </fieldset>
+    <input type="submit" value="Enviar">
+  </form>
+  <hr>
+  <h2 class="mt-4">Buscar libro/s</h2>
+  <form class="form-inline mt-2 mt-md-0" action="{% url 'buscalibros' %}" method="get">
+    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  </form>
+  {% if noencontrado %}
+  <h3 class="error">Mensaje no encontrado</h3>
+  {% endif %}
+
+</div>
 
 {% endblock %}
